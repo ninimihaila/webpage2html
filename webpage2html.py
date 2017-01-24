@@ -3,7 +3,6 @@
 
 import os, sys, re, base64, urlparse, urllib2, urllib, datetime
 from bs4 import BeautifulSoup
-import lxml
 import requests
 import argparse
 
@@ -179,7 +178,7 @@ def generate(index, verbose=True, comment=True, keep_script=False, prettify=Fals
     if extra_data and extra_data.get('url'): index = extra_data['url']
 
     # now build the dom tree
-    soup = BeautifulSoup(html_doc, 'lxml')
+    soup = BeautifulSoup(html_doc, 'html.parser')
     for link in soup('link'):
         if link.get('href'):
             if (link.get('type') == 'text/css' or link['href'].lower().endswith('.css') or 'stylesheet' in (
@@ -255,7 +254,7 @@ def generate(index, verbose=True, comment=True, keep_script=False, prettify=Fals
         for html in soup('html'):
             html.insert(0, BeautifulSoup(
                 '<!-- \n single html processed by https://github.com/zTrix/webpage2html\n url: %s\n date: %s\n-->' % (
-                index, datetime.datetime.now().ctime()), 'lxml'))
+                index, datetime.datetime.now().ctime()), 'html.parser'))
             break
     if prettify:
         return soup.prettify(formatter='html')
@@ -272,7 +271,7 @@ usage:
 options:
 
     -h, --help              help page, you are reading this now!
-    -q, --quite             don't show verbose url get log in stderr
+    -q, --quiet             don't show verbose url get log in stderr
     -s, --script            keep javascript in the generated html
 
 examples:
