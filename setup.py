@@ -5,16 +5,16 @@ from setuptools import find_packages
 
 setup(
     name='webpage2html',
-    version='0.2.1',
+    version='0.2.2',
 
     author='Wenlei Zhu',
     author_email='i@ztrix.me',
-    url='https://github.com/zTrix/webpage2html',
+    url='https://github.com/ninimihaila/webpage2html',
 
     license='LICENSE.txt',
     keywords="webpage html convert",
     description='Save/convert web pages to a single editable html file',
-    long_description=open('README.txt').read(),
+    long_description=open('readme.md').read(),
 
     py_modules = ['webpage2html'],
 
@@ -35,6 +35,7 @@ setup(
         'Programming Language :: Python',
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.5',
         'Topic :: Software Development',
         'Topic :: System',
         'Topic :: Terminals',
